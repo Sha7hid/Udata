@@ -13,18 +13,17 @@ function App() {
   const [student, setStudent] = useState([]);
   const [loading, setLoading] = useState(false);
 // const [num, setNum] = useState(false);
-  useEffect(()=>{
+  
     async function fetchdata(){
+      setLoading(true);
       axios.get(`https://reqres.in/api/users?Page=1`).then(res =>{
      setStudent(res.data.data);
-    
+   setLoading(false);
     })
-}
-fetchdata();
 
 
+
 }
-  ,[])
   console.log(student);
   console.log(loading);
 
@@ -35,13 +34,13 @@ fetchdata();
           <Navbar.Brand href="#home">
             Udata
           </Navbar.Brand>
-          <button className='btn btn-warning' onClick={() => setLoading(true)} >Get users</button>
+          <button className='btn btn-warning' onClick={fetchdata} >Get users</button>
         </Container>
       </Navbar>
      
       <div className="grid-view">
-      
-{loading ? Array.from(student).map((student)=>(
+      {loading && <Loading/>}
+{ Array.from(student).map((student)=>(
     //  <ListItem key={student.id} student={student}/>
     <>
   <div className='card-wrapper'>
@@ -56,7 +55,7 @@ fetchdata();
     </Card>
     </div>
     </>
-    )):<Loading/>}
+    ))}
         </div>
     </div>
     
