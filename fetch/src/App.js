@@ -12,7 +12,7 @@ import Card from 'react-bootstrap/Card';
 function App() {
   const [student, setStudent] = useState([]);
   const [loading, setLoading] = useState(false);
-// const [num, setNum] = useState(false);
+
   
     async function fetchdata(){
       setLoading(true);
@@ -20,9 +20,6 @@ function App() {
      setStudent(res.data.data);
    setLoading(false);
     })
-
-
-
 }
   console.log(student);
   console.log(loading);
@@ -41,7 +38,6 @@ function App() {
       <div className="grid-view">
       {loading && <Loading/>}
 { Array.from(student).map((student)=>(
-    //  <ListItem key={student.id} student={student}/>
     <>
   <div className='card-wrapper'>
        <Card style={{ width: '15rem', height:'15rem' , display:'flex' , justifyContent:'center', alignItems:'center'}}>
