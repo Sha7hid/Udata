@@ -16,6 +16,7 @@ function App() {
   
     async function fetchdata(){
       setLoading(true);
+      
       axios.get(`https://reqres.in/api/users?Page=1`).then(res =>{
      setStudent(res.data.data);
    setLoading(false);
