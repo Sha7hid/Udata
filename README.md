@@ -1,2 +1,2 @@
 # Udata
-A react which fetches user data on click.
+A react app which fetches user data on click which shows loading while fetching data.
